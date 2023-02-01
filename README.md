@@ -53,5 +53,5 @@ git clone https://github.com/woshicqy/Fetch-point-redeem.git
 ```
 
 ```
-cd 
+cd Fetch-point-redeem
 ```
