@@ -1,7 +1,6 @@
 import numpy as np
 import collections
 from datetime import datetime
-import heapq
 from dateutil import parser
 import argparse
 import csv
