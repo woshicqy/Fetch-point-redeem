@@ -35,13 +35,21 @@ python3 mycode.py 5000
 "UNILEVER": 0, 
 "MILLER COORS": 5300 
 } 
-In this repo, it included ```mycode.py``` and data file ```transactions.cvs```
-# How to run the code
+In this repo, it included ```mycode.py``` and data file ```transactions.cvs```.
+# How to run the code in your terminal
 
+## Using the following command line to run this code
+Get the repo
 ```
 git clone https://github.com/woshicqy/Fetch-point-redeem.git
 ```
-
+Move to the folder
 ```
 cd Fetch-point-redeem
 ```
+Run the code
+```
+python -u mycode.py --remaining 5000
+```
+
+After running the code, you will get the output in your terminal, and it will generate on file with the printed output in your local machine.

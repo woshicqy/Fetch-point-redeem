@@ -3,21 +3,25 @@ import collections
 from datetime import datetime
 import heapq
 from dateutil import parser
+import argparse
+import csv
+
 
 
 
 class transaction_points(object):
     """docstring for transaction_points"""
-    def __init__(self, datafile,points):
+    def __init__(self, config):
         super(transaction_points, self).__init__()
-        self.datafile = datafile
+        self.datafile = config.data_path
         self.accounts = collections.defaultdict()
-        self.points = points
+        self.points = config.rp
         self.transactions = collections.deque()
         self.total_points = 0
         self.status_code = 0
         self.alldata = []
         self.points_spent = []
+        self.output_saving = config.output_path
     def load_data(self):
         ### load all transaction data ###
         self.data = np.genfromtxt(self.datafile,
@@ -92,7 +96,7 @@ class transaction_points(object):
         # print(f'all transactions:{self.transactions}')
         if self.total_points < self.points:
             self.status_code = 400
-            return("Insufficient points value !!",int(status_code))
+            return("Insufficient points value !!",int(self.status_code))
         else:
             points_list = []
             while self.points > 0:
@@ -118,21 +122,54 @@ class transaction_points(object):
         for val in points_list:
             val[1] = -val[1]
             self.points_spent.append(val)
+        
+        
+        with open(self.output_saving, 'w', encoding='UTF8', newline='') as f:
+            ### saving spent info ###
+            writer = csv.writer(f)
+            writer.writerow(['Account spent Info'])
+            for item in self.points_spent:
+                writer.writerow(item[:2])
+            writer.writerow('\n')
+            ### saving balance info ###
+            writer.writerow(['Account balance Info'])
+            for payer in self.accounts:
+                tmp = [payer,self.accounts[payer]]
+                writer.writerow(tmp)
+        f.close()
+        print('>>> Saving is done <<<')
+
+
+
+
 
     def main(self):
 
         self.load_data()
         self.add_points()
         self.redeem_points()
-        print(f'q:{self.transactions}')
-        print(f'accounts:{self.accounts}')
-        print(f'points info:{self.total_points}')
-        print(f'points_spent info:{self.points_spent}')
+        # print(f'q:{self.transactions}')
+        # print(f'accounts:{self.accounts}')
+        # print(f'points info:{self.total_points}')
+        # print(f'points_spent info:{self.points_spent}')
 
 
 
 if __name__ == '__main__':
-    tp = transaction_points('sample_data.csv',5000)
+    parser = argparse.ArgumentParser(description = "fetch points redeem")
+    # Debug mode #
+    parser.add_argument('--data_path',        type = str, default = 'transactions.csv',
+                        help = 'The path of the data stored.')
+
+    parser.add_argument('--rp',               type = int, default = 5000,
+                        help = 'The total points need to redeem.')
+    
+    parser.add_argument('--output_path',        type = str, default = 'output.csv',
+                        help = 'The path of the output.')
+
+
+    config = parser.parse_args()
+    tp = transaction_points(config)
     tp.main()
     
 
