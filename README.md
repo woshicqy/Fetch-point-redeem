@@ -47,7 +47,12 @@ Move to the folder
 ```
 cd Fetch-point-redeem
 ```
-Run the code
+
+To run the code,install the packages first.
+```
+pip install -r requirements.txt
+```
+Ready to run the code.
 ```
 python -u mycode.py --remaining 5000
 ```
