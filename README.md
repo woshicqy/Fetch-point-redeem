@@ -52,4 +52,10 @@ Run the code
 python -u mycode.py --remaining 5000
 ```
 
-After running the code, you will get the output in your terminal, and it will generate on file with the printed output in your local machine.
+After running the code, you will get the output in your terminal, and it will generate on file named ```output.csv```with the printed output in your local machine.
+
+
+```
+accounts:defaultdict(None, {'DANNON': 1000, 'UNILEVER': 0, 'MILLER COORS': 5300})
+points_spent info:[['DANNON', -100, 'now'], ['UNILEVER', -200, 'now'], ['MILLER COORS', -4700, 'now']]
+```

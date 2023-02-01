@@ -149,9 +149,9 @@ class transaction_points(object):
         self.add_points()
         self.redeem_points()
         # print(f'q:{self.transactions}')
-        # print(f'accounts:{self.accounts}')
+        print(f'accounts:{self.accounts}')
         # print(f'points info:{self.total_points}')
-        # print(f'points_spent info:{self.points_spent}')
+        print(f'points_spent info:{self.points_spent}')
 
 
 
