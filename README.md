@@ -35,17 +35,7 @@ python3 mycode.py 5000
 "UNILEVER": 0, 
 "MILLER COORS": 5300 
 } 
-
-How do I submit it? 
-Provide a link to a public repository, such as GitHub or BitBucket, that contains your code to the provided link through Greenhouse.
-FAQ 
-How will this exercise be evaluated? 
-An engineer will review the code you submit. At a minimum they must be able to run the code and the code must provide the expected results. You should provide any necessary documentation within the repository. 
-I have questions about the problem statement 
-For any requirements not specified via an example, use your best judgment to determine the expected result. 
-Can I provide a private repository? 
-If at all possible, we prefer a public repository because we do not know which engineer will be evaluating your submission. Providing a public repository ensures a speedy review of your submission. If you are still uncomfortable providing a public repository, you can work with your recruiter to provide access to the reviewing engineer. 
-
+In this repo, it included ```mycode.py``` and data file ```transactions.cvs```
 # How to run the code
 
 ```
